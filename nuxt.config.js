@@ -22,6 +22,11 @@ export default {
     ]
   },
 
+  env: {
+    MAIN_API_URL: process.env.MAIN_API_URL || 'http://localhost:3030',
+    NOTIFY_URL: process.env.NOTIFY_URL || 'http://localhost:3031'
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
   ],
@@ -51,7 +56,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'http://localhost:3030'
+    baseURL: process.env.MAIN_API_URL || 'http://localhost:3030'
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa

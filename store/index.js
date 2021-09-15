@@ -2,7 +2,7 @@ import randtoken from 'rand-token'
 import { io } from 'socket.io-client'
 import createWebSocketPlugin from '~/plugins/websocket.plugin'
 
-const socket = io('http://localhost:3031', { transports : ['websocket'] })
+const socket = io(process.env.NOTIFY_URL, { transports : ['websocket'] })
 
 if (!localStorage.userToken) {
   localStorage.userToken = randtoken.generate(16)
