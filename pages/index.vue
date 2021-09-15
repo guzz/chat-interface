@@ -8,6 +8,10 @@
 </template>
 
 <script>
+import {
+  VSlideXTransition,
+  VSlideYTransition
+} from 'vuetify/lib/components/transitions'
 import ConversationArea from '@/components/ConversationArea.vue'
 import conversationsList from '@/components/ConversationsList.vue'
 
@@ -19,9 +23,9 @@ export default {
     },
     transition () {
       if (this.$vuetify.breakpoint.smAndDown) {
-        return 'v-slide-y-transition'
+        return VSlideYTransition
       } else {
-        return 'v-slide-x-transition'
+        return VSlideXTransition
       }
     }
   }
