@@ -57,7 +57,6 @@ export const mutations = {
   },
 
   receiveMessage(state, data) {
-    console.log(data);
     if (data.wizardId && data.wizardId !== state.wizardId) {
       state.wizardId = data.wizardId
     } else if (!data.wizardId && state.wizardId) {
