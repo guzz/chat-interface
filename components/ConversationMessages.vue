@@ -26,7 +26,7 @@
             </v-card>
             <template v-if="message.actions && index === 0">
                 <v-btn
-                    v-for="(action, a) in message.actions"
+                    v-for="(action, a) in message.actions.filter((a, i) => i < 4)"
                     :key="a"
                     block
                     class="conversation-area__user-action my-1"

@@ -57,14 +57,20 @@ export const mutations = {
   },
 
   receiveMessage(state, data) {
+    console.log(data);
     if (data.wizardId && data.wizardId !== state.wizardId) {
       state.wizardId = data.wizardId
+    } else if (!data.wizardId && state.wizardId) {
+      state.wizardId = null;
     }
-    if (data.accessToken && data.accessToken !== state.accessToken) {
-      state.accessToken = data.accessToken
-    }
-    if (data.authorization && data.authorization.payload !== state.payload) {
-      state.payload = data.authorization.payload
+    const authPayload = data.submit && data.submit.find(s => s.accessToken)
+    if (authPayload) {
+      if (authPayload.accessToken && authPayload.accessToken !== state.accessToken) {
+        state.accessToken = authPayload.accessToken
+      }
+      if (authPayload.authorization && authPayload.authorization.payload !== state.payload) {
+        state.payload = authPayload.authorization.payload
+      }
     }
     if (data.text) {
       const message = Object.assign({}, state.messageModel)
